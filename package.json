@@ -26,6 +26,7 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "21.2.1",
+    "raf": "^3.4.0",
     "react-test-renderer": "^16.3.2",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2",

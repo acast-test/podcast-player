@@ -76,7 +76,7 @@ class Podcasts extends React.Component {
         const episodes = this.props.episodes.map(episode => (
             <li key={episode.id} style={{marginBottom: '1rem'}}>
                 <a
-                    className="play-episode"
+                    data-test-id="play-episode"
                     href="#"
                     onClick={this.handlePlayEpisode(episode.id)}
                 >

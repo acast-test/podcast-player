@@ -1,3 +1,3 @@
 module.exports = {
-    setupFiles: ["./jest.setup.js"]
+    setupFiles: ["raf/polyfill", "./jest.setup.js"]
 };

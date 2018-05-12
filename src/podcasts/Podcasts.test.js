@@ -56,7 +56,7 @@ describe('<Podcasts />', () => {
             />
         );
 
-        wrapper.find('.play-episode').simulate('click');
+        wrapper.find('[data-test-id="play-episode"]').simulate('click');
 
         // assert
         expect(playEpisode).toHaveBeenCalledWith(currentEpisode.id);
