@@ -1,0 +1,1 @@
+export const RAISE_ERROR = 'app/RAISE_ERROR';
