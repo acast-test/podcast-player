@@ -12,7 +12,7 @@
 - did not separate production/dev.. environments. There is no production build as well.
 
 - Error handling just displays errors in an error bar, it should have a button to dismiss error and then error id should be 
-used to do that. It might be a good idea to have a error handling in middleware where `fetch` is being performed as well depending on how application grows. Also, `<audio />` elements should have error handling by using `onerror` event on `<audio />` tag.
+used to do that. It might be a good idea to have an error handling in middleware where `fetch` is being performed as well depending on how application grows. Also, `<audio />` elements should have error handling by using `onerror` event on `<audio />` tag.
 
 - `fetchEpisodes` action creator has a hardcoded url (including api host) - this one should be defined through webpack `DefinePlugin` and vary depending on environment (prod/dev/staging ..) or handled in some another way, but not hardcoded.
 
@@ -47,7 +47,7 @@ used to do that. It might be a good idea to have a error handling in middleware 
    
    And then components just import selectors from `src/selectors` and just pass whole state to selector without needing to worry  everytime about how state structure looks like.
   
-  - There are no mocks in tests at all, for example in `Podcasts.test.js` there is a tests which checks if `fetchEpisodes` was called when component mounted:
+  - There are no mocks in tests at all, for example in `Podcasts.test.js` there is a test which checks if `fetchEpisodes` was called when component mounted:
 
     ```js
         it('fetches episodes', () => {
