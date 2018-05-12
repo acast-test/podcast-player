@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Marker.scss';
 
 function Marker(props) {
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center'
-            }}
-        >
+        <div className="marker">
             {props.type === 'ad' && (
                 <a
                     href={props.link}

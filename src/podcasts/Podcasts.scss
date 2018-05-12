@@ -1,0 +1,60 @@
+$dark-green: #4CAF50;
+
+.podcasts {
+    display: flex;
+    justify-content: center;
+
+    &__list {
+        list-style: none;
+    }
+
+    &__list-item {
+        margin-bottom: 1em;
+    }
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+
+    &__audio {
+        border: 1px solid black;
+    }
+
+    &__forward-button {
+        background-color: $dark-green;
+        color: white;
+        border-color: $dark-green;
+        border-radius: 50%;
+        margin-left: 1em;
+        outline: none;
+    }
+
+    &__backward-button {
+        background-color: $dark-green;
+        color: white;
+        border-color: $dark-green;
+        border-radius: 50%;
+        outline: none;
+    }
+
+    &__input {
+        max-width: 100px;
+        margin-left: 0.5rem;
+        border-radius: 6px;
+        outline: none;
+    }
+
+    &__jump-to-time-button {
+        background-color: $dark-green;
+        color: white;
+        border-color: $dark-green;
+        margin-left: 0.2em;
+        outline: none;
+        border-radius: 6px;
+    }
+
+    &__marker {
+        margin-top: 2em;
+    }
+}

@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import * as selectors from './selectors';
 import reducer from './reducer';
 
 describe('errors reducer', () => {
@@ -10,7 +11,7 @@ describe('errors reducer', () => {
 
         // act
         const state = reducer(initialState, action);
-        const error = state[0];
+        const error = selectors.getErrors(state)[0];
 
         // assert
         expect(state.length).toBe(1);

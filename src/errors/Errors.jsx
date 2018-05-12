@@ -1,7 +1,9 @@
 import { connect } from "react-redux"
 import * as R from "ramda"
+import {getErrors} from './selectors';
 import React from "react"
 import PropTypes from "prop-types"
+import './Errors.scss';
 
 function Errors(props) {
     if (props.errors.length === 0) {
@@ -31,7 +33,7 @@ Errors.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        errors: state.errors
+        errors: getErrors(state.errors)
     }
 }
 

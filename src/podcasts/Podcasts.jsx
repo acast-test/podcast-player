@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as podcastActions from './actions';
 import * as podcastSelectors from './selectors';
-import {actions as errorActions} from '../errors';
+import {actions as errorActions, selectors as errorSelectors} from '../errors';
 import Marker from './Marker';
 import * as R from 'ramda';
 import PropTypes from 'prop-types';
+import './Podcasts.scss';
 
 class Podcasts extends React.Component {
     componentDidMount() {
@@ -74,12 +75,11 @@ class Podcasts extends React.Component {
         }
 
         const episodes = this.props.episodes.map(episode => (
-            <li key={episode.id} style={{marginBottom: '1rem'}}>
+            <li key={episode.id} className="podcasts__list-item">
                 <a
                     data-test-id="play-episode"
                     href="#"
-                    onClick={this.handlePlayEpisode(episode.id)}
-                >
+                    onClick={this.handlePlayEpisode(episode.id)}>
                     {episode.name}
                 </a>
             </li>
@@ -87,14 +87,14 @@ class Podcasts extends React.Component {
 
         return (
             <div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <ul style={{listStyle: 'none'}}>{episodes}</ul>
+                <div className="podcasts">
+                    <ul className="podcasts__list">{episodes}</ul>
                 </div>
                 {!R.isEmpty(this.props.currentEpisode) && (
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className="player">
                         <audio
                             controls
-                            style={{border: '1px solid black'}}
+                            className="player__audio"
                             ref={audio => {
                                 this.audio = audio;
                             }}
@@ -102,54 +102,24 @@ class Podcasts extends React.Component {
                                 this.props.currentEpisode.audio
                             }`}
                             onTimeUpdate={this.handleTimeUpdate}
-                            onSeeking={this.handleSeeking}
-                        />
+                            onSeeking={this.handleSeeking}/>
                         <button
-                            style={{
-                                backgroundColor: '#4CAF50',
-                                color: 'white',
-                                borderColor: '#4CAF50',
-                                borderRadius: '50%',
-                                marginLeft: '1em',
-                                outline: 'none'
-                            }}
-                            onClick={this.handleForwardClick}
-                        >
+                            className="player__forward-button"
+                            onClick={this.handleForwardClick}>
                             +5s
                         </button>
                         <button
-                            style={{
-                                backgroundColor: '#4CAF50',
-                                color: 'white',
-                                borderColor: '#4CAF50',
-                                borderRadius: '50%',
-                                outline: 'none'
-                            }}
-                            onClick={this.handleBackWardClick}
-                        >
+                            className="player__backward-button"
+                            onClick={this.handleBackWardClick}>
                             -5s
                         </button>
                         <input
-                            style={{
-                                maxWidth: '100px',
-                                marginLeft: '0.5rem',
-                                borderRadius: '6px',
-                                outline: 'none'
-                            }}
+                            className="player__input"
                             type="number"
                             value={this.props.jumptoTime}
-                            onChange={this.handleInputChange}
-                        />
+                            onChange={this.handleInputChange}/>
                         <button
-                            style={{
-                                backgroundColor: '#4CAF50',
-                                color: 'white',
-                                textShadow: '3px 2px 1px #9daef5',
-                                borderColor: '#4CAF50',
-                                marginLeft: '0.2em',
-                                outline: 'none',
-                                borderRadius: '6px'
-                            }}
+                            className="player__jump-to-time-button"
                             onClick={this.handleJumptoTimeClick}
                         >
                             jump to specified time
@@ -158,7 +128,7 @@ class Podcasts extends React.Component {
                 )}
                 {this.props.currentEpisodeTime > 0 &&
                     this.props.currentEpisodeTime < this.audio.duration && (
-                        <div style={{marginTop: '2rem'}}>
+                        <div className="player__marker">
                             <Marker
                                 content={this.props.currentMarker.content}
                                 link={this.props.currentMarker.link}
@@ -204,7 +174,7 @@ function connectStateToProps(state) {
         currentMarker: podcastSelectors.getCurrentMarker(state.podcasts),
         pendingSeek: R.path(['podcasts', 'pendingSeek'], state),
         jumptoTime: R.path(['podcasts', 'jumptoTime'], state),
-        errors: state.errors
+        errors: errorSelectors.getErrors(state.errors)
     };
 }
 
