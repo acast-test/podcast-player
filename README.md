@@ -9,7 +9,7 @@
 
 ## Solution description
 
-- I use only `/episodes` endpoint from api. Did not see reason to use endpoint to get episode by id, since it returns the same data as I already have in the list. If `/episodes` was returning just some information neccesary to display list of episodes (for example, only `id` and `name`) and get episode by id endpoint would return additional information needed to play episode, I would have used it then.
+- I use only `/episodes` endpoint from api. Did not use endpoint to get episode by id, since it returns the same data as I already have in the list. If `/episodes` was returning just some information neccesary to display list of episodes (for example, only `id` and `name`) and get episode by id endpoint would return additional information needed to play episode, I would have used it then.
 
 - did not separate production/dev.. environments. There is no production build as well.
 
