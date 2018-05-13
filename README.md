@@ -27,16 +27,16 @@ used to do that. It might be a good idea to have an error handling in middleware
     componentWillMount() {
       this.props.fetchEpisodes();
     }
-    
+
     // ...
   }
   ```
-  
+
   It might be not very hard to automate generation of this module from let's say api documentation.
-  
+
  - For css sass is used together with [BEM](http://getbem.com/) (following naming conventions as well). For more complex css modifications/interactions I would have used [styled-components](https://github.com/styled-components/styled-components). I did not spend much time on css and design.
   
- - Application is organized into folders - `errors` and `podcasts`. The idea is that one can take the whole folder (`feature`) and move it anywhere independently. Also, when application is divided in such way, it's easier to develop without affecting other modules in application. If one module needs to use something from other module, they can communicate through interface which is exported through `index.js` (e.g exported `selectors`) like in `errors` case (`getErrors` in that case is just a dummy selector to demonstrate this purpose).
+ - Application is organized into folders - `errors` and `podcasts`. The idea is that one can take the whole folder (`feature`) and move it anywhere independently. Also, when application is divided in such way, it's easier to develop without affecting other modules in application. If one module needs to use something from other module, they can communicate through interface which is exported through `index.js` (e.g exported `selectors`) like in `errors` case (`getErrors` in that case is just a dummy selector to demonstrate this purpose). It's different approach than the one used commonly in react apps (components, actions, reducers folders).
 
  - When using `getErrors(state.errors)`, selector accepts only the part of errors state, so we don't pass the whole state object, it's  good, but I would have somewhere a general file which imports all the selectors from all the modules and exports them, but exports        them with state already `bound` to specific part, something like this:
  
