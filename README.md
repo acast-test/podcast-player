@@ -12,12 +12,12 @@
 - did not separate production/dev.. environments. There is no production build as well.
 
 - Error handling just displays errors in an error bar, it should have a button to dismiss error and then error id should be 
-used to do that. It might be a good idea to have an error handling in middleware where `fetch` is being performed as well depending on how application grows. Also, `<audio />` elements should have error handling by using `onerror` event on `<audio />` tag.
+used to do that. It might be a good idea to have an error handling in middleware where `fetch` is being performed as well depending on how application grows. Also, `<audio />` elements should have error handling by using `onerror` event on `<audio />` tag. Too see that error bar appears one can stop server and then open app.
 
 - `fetchEpisodes` action creator has a hardcoded url (including api host) - this one should be defined through webpack `DefinePlugin` and vary depending on environment (prod/dev/staging ..) or handled in some another way, but not hardcoded.
 
 - I would have a separate module for api calls in general which exposes action creators - the ones thate create `redux-effects` actions. This module would live in it's own npm package and have it's own independent tests. Usage would be something like:
-  
+
   ```js
   import { fetchEpisodes } from '@podcast/api-client'
   
