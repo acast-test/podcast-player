@@ -65,5 +65,7 @@ used to do that. It might be a good idea to have an error handling in middleware
     ```
   
    if component had a side effect, one would need to mock server for this test. But now fetching lives in it's own world not related to components - in a middleware.
-  
-  - in general such small application wouldn't need `redux`, but the task was to look also in that application will grow and I also wanted to show how I move side effects away from components via using `redux-effects`.
+
+  - Did not spend time on writing js docs since tests can server as documentation.
+
+  - In general such small application wouldn't need `redux`, but the task was to look also in that application will grow and I also wanted to show how I move side effects away from components via using `redux-effects`.

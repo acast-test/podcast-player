@@ -11,15 +11,7 @@ function Errors(props) {
     }
 
     return (
-        <ul
-            style={{
-                background: "red",
-                textAlign: "center",
-                padding: "1em",
-                width: "100%",
-                listStyle: 'none'
-            }}
-        >
+        <ul className="errors">
             {props.errors.map(error => <li key={error.id}>{error.message}</li>)}
         </ul>
     )
