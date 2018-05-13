@@ -1,6 +1,6 @@
 # Usage #
 
- - clone repository: https://github.com/acast-test/podcast-player.git
+ - clone repository: git clone https://github.com/acast-test/podcast-player.git
  - cd podcast-player
  - run `npm install` to install dependencies
  - run tests by running `npm run test`
